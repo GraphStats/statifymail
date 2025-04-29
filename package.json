@@ -1,0 +1,39 @@
+{
+  "name": "zero",
+  "version": "0.1.0",
+  "private": true,
+  "packageManager": "bun@1.2.5",
+  "scripts": {
+    "prepare": "husky",
+    "dev": "dotenv -- turbo run dev",
+    "build": "dotenv -- turbo run build",
+    "start": "dotenv -- turbo run start",
+    "lint": "dotenv -- turbo run lint",
+    "format": "prettier --write apps/**/*.{ts,tsx} --log-level silent",
+    "check": "bun run check:format && bun run lint",
+    "check:format": "prettier . --check",
+    "lint-staged": "prettier --write --ignore-unknown",
+    "docker:up": "docker-compose up -d",
+    "docker:down": "docker-compose down",
+    "docker:clean": "docker-compose down -v",
+    "db:generate": "dotenv -- turbo run db:generate",
+    "db:migrate": "dotenv -- turbo run db:migrate",
+    "db:push": "dotenv -- turbo run db:push",
+    "db:studio": "dotenv -- turbo run db:studio"
+  },
+  "devDependencies": {
+    "@types/node": "22.13.8",
+    "@zero/tsconfig": "workspace:*",
+    "dotenv-cli": "^8.0.0",
+    "husky": "9.1.7",
+    "prettier": "3.5.3",
+    "prettier-plugin-sort-imports": "1.8.6",
+    "prettier-plugin-tailwindcss": "0.6.11",
+    "turbo": "^2.5.0",
+    "typescript": "5.8.2"
+  },
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ]
+}
